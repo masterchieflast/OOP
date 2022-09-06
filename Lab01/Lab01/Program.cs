@@ -65,7 +65,8 @@
             //var varInt2 = 6;
             //Console.WriteLine();
             //Console.WriteLine(varInt1 + varInt2);
-
+            //string[][] a;
+            
             ////Nullable
             //var students = new student[2];
             //students[0] = new student(1, "Vasya", null);
@@ -73,7 +74,7 @@
 
             ////work with var
             //var varIntType = 1214;
-            //varIntType = 213.5;
+            ////varIntType = 213.5;
 
             #endregion
 
@@ -291,7 +292,7 @@
             //        maxValue++;
             //        Console.WriteLine(maxValue);
             //    }
-                
+
             //}
 
             //LocalFunction1();
