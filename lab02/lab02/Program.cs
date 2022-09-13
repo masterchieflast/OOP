@@ -2,7 +2,7 @@
 {
     public partial class Student
     {
-        private static int _idCounter;
+        public static int _idCounter;
         public const string University = "BSTU";
         private readonly int Id;
         private string Name { get; set; }
@@ -28,7 +28,7 @@
                 faculty = value;
             }
         }
-
+        
         private int Course { get; set; }
         private int Group { get; set; }
     }
