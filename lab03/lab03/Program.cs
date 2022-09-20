@@ -7,6 +7,8 @@
             var set1 = new MySet("1");
             set1.DeveloperInitialization("Pavel", 43, "IT");
 
+            MySet.Production zz = new MySet.Production(2, "dws");
+            
             var set2 = new MySet("a");
             set2.ProductionInitialization(52, "Apple");
             set2 += "b";

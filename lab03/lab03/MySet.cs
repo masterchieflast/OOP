@@ -1,5 +1,18 @@
 ﻿namespace lab03
 {
+    public class Developer
+    {
+        public string Name;
+        public int Id;
+        public string Department;
+
+        public Developer(string name, int id, string department)
+        {
+            Name = name;
+            Id = id;
+            Department = department;
+        }
+    }
     public class MySet
     {
         public HashSet<string> _set;
@@ -33,19 +46,7 @@
                 Organization = organization;
             }
         }
-        public class Developer
-        {
-            public string Name;
-            public int Id;
-            public string Department;
-
-            public Developer(string name, int id, string department)
-            {
-                Name = name;
-                Id = id;
-                Department = department;
-            }
-        }
+        
 
         public string this[int index]
         {
