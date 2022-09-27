@@ -4,11 +4,13 @@
     {
         public void Launch()
         {
+            Console.WriteLine("launch");
             Engine.Status = true;
         }
 
         public void Shutdown()
         {
+            Console.WriteLine("shutdown");
             Engine.Status = false;
         }
 
@@ -52,8 +54,13 @@
         {
             if (ReadinessСheck())
             {
+                Console.WriteLine("drive");
                 Fuel -= FuelСonsumption / 100;
                 Mileage++;
+            }
+            else
+            {
+                Console.WriteLine("error");
             }
         }
 

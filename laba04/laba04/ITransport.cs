@@ -2,6 +2,7 @@
 {
     public interface ITransport
     {
+        
         void Launch();
         void Shutdown();
         bool ReadinessСheck();

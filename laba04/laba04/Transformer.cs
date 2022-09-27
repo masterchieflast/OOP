@@ -36,11 +36,13 @@
 
         public void Launch()
         {
+            Console.WriteLine("launch");
             Heart.Status = true;
         }
 
         public void Shutdown()
         {
+            Console.WriteLine("shutsown");
             Heart.Status = false;
         }
 
@@ -53,6 +55,7 @@
         {
             if (ReadinessСheck())
             {
+                Console.WriteLine("drive");
                 Energy -= EnergyСonsumption / 100;
             }
         }

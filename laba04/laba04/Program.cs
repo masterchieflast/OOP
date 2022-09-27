@@ -9,6 +9,7 @@
             var car = new Car(4, "car", engine, 100, 10);
 
             car.SpeedControl();
+            ((ITransport)car).SpeedControl();
             ITransport iTransport = car;
             iTransport.SpeedControl();
 
@@ -60,6 +61,13 @@
             {
                 Printer.IAmPrinting(e);
             }
+
+            Console.WriteLine("--------------------5(car)------------------");
+            Porsche.Drive();
+            Porsche.Launch();
+            Porsche.Drive();
+            Porsche.Shutdown();
+            
         }
     }
 }
