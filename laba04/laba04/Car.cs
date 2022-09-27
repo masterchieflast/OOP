@@ -17,13 +17,17 @@
             return Engine.Status && Fuel > 0;
         }
 
-        public override void Drive()
+        public void Drive()
         {
             if (ReadinessСheck())
             {
                 Fuel -= FuelСonsumption / 100;
                 Mileage++;
             }
+        }
+
+        public Car(int countPassengers, string? model, Engine engine, double weight, double fuel) : base(countPassengers, model, engine, weight, fuel)
+        {
         }
     }
 }

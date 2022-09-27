@@ -4,7 +4,9 @@
     {
         public int CountPassengers;
 
-        public virtual void Drive(){}
-        
+        protected TransportVehicle(int countPassengers)
+        {
+            CountPassengers = countPassengers;
+        }
     }
 }

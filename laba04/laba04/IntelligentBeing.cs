@@ -19,7 +19,7 @@
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("age can't negative");
+                    throw new ArgumentException("age can't be negative");
                 }
 
                 _age = value;
