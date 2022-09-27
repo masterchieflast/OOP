@@ -2,7 +2,7 @@
 {
     public class Printer
     {
-        public static void IAmPrinting(TransportVehicle element)
+        public static void IAmPrinting(ITransport element)
         {
             if (element is TransportVehicle)
             {
@@ -10,7 +10,7 @@
             }
             else
             {
-                var temp = element as Car;
+                var temp = element as Transformer;
                 if (temp != null)
                     Console.WriteLine($"Type object({temp.GetType()}): " + temp);
             }

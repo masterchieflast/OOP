@@ -1,6 +1,6 @@
 ﻿namespace laba04
 {
-    internal interface ITransport
+    public interface ITransport
     {
         void Launch();
         void Shutdown();

@@ -54,7 +54,7 @@
 
             Console.WriteLine("--------------------4(Print)----------------");
 
-            var array = new Car[] { Porsche, car };
+            var array = new ITransport[] { Porsche, car, transformer };
 
             foreach (var e in array)
             {

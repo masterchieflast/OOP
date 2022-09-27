@@ -71,7 +71,7 @@
 
         public override string ToString()
         {
-            return $"The transformer{Name} was created {Age} years ago";
+            return $"transformer {Name} was created {Age} years ago";
         }
 
         public override bool Equals(object? obj)
