@@ -1,7 +1,10 @@
 ﻿namespace laba04
 {
-    abstract class TransportVehicle
+    public abstract class TransportVehicle
     {
         public int CountPassengers;
+
+        public virtual void Drive(){}
+        
     }
 }

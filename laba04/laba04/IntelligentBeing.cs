@@ -1,12 +1,20 @@
 ﻿namespace laba04
 {
-    internal class IntelligentBeing
+    public abstract class IntelligentBeing : object
     {
-        private int age;
+        public string Name;
+        private int _age;
+
+        protected IntelligentBeing(string name, int age)
+        {
+            Name = name;
+            _age = age;
+        }
+        
 
         public int Age
         {
-            get => age;
+            get => _age;
             set
             {
                 if (value < 0)
@@ -14,8 +22,13 @@
                     throw new ArgumentException("age can't negative");
                 }
 
-                age = value;
+                _age = value;
             }
+        }
+
+        public void Birthday()
+        {
+            Age++;
         }
     }
 }
