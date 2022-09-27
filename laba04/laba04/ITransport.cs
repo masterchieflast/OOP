@@ -6,5 +6,7 @@
         void Shutdown();
         bool ReadinessСheck();
         void Drive();
+
+        void SpeedControl();
     }
 }

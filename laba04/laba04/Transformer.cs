@@ -57,9 +57,21 @@
             }
         }
 
+        public void SpeedControl()
+        {
+            if (_transformationStatus)
+            {
+                Console.WriteLine(Heart.Power * 24);
+            }
+            else
+            {
+                Console.WriteLine("Parking");
+            }
+        }
+
         public override string ToString()
         {
-            return $"The transformer was created {Age} years ago";
+            return $"The transformer{Name} was created {Age} years ago";
         }
 
         public override bool Equals(object? obj)

@@ -8,5 +8,10 @@
         {
             CountPassengers = countPassengers;
         }
+
+        public override string ToString()
+        {
+            return $"this transport have {CountPassengers} count passengers";
+        }
     }
 }

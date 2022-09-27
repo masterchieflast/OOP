@@ -6,57 +6,40 @@
         public Engine? Engine;
         public double Weight;
         public double FuelСonsumption => Engine.Power * 10 / Weight;
+        private int _transmission;
         public int Transmission
         {
-            get => Transmission;
+            get => _transmission;
             set
             {
-                Transmission = value;
+                _transmission = value;
 
-                if (value is < 1 or > 6)
+                if (value is < -1 or > 6)
                 {
                     Console.WriteLine("you car no support {0} transmission", value);
-                    Transmission = 0;
+                    _transmission = 0;
                 }
             }
         }
         public int Mileage;
-        private double _fuel;
-        public double Fuel
+
+        public abstract void SpeedControl();
+        public virtual bool ReadinessСheck()
         {
-            get => _fuel;
-            set
-            {
-                if (value < 0.0)
-                {
-                    throw new ArgumentException("fuel can't be negative");
-                }
-
-                _fuel = value;
-            }
-
+            return Engine.Status;
         }
 
-        public void SpeedControl()
-        {
-            if (Transmission == 0)
-            {
-                Console.WriteLine("Parking");
-            }
-            else
-            {
-                Console.WriteLine(Engine.Power * Transmission * 13.5);
-            }
-        }
-
-        protected CarManagement(int countPassengers, string? model, Engine engine, double weight,
-            double fuel) : base(countPassengers)
+        protected CarManagement(int countPassengers, string? model, Engine engine, double weight) : base(countPassengers)
         {
             Model = model;
             Engine = engine;
             Weight = weight;
-            _fuel = fuel;
             Transmission = 0;
+        }
+
+        public override string ToString()
+        {
+            return $"model: {Model}\t millage:{Mileage} \t weight{Weight}";
         }
     }
 }

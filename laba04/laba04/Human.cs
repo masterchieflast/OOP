@@ -10,5 +10,10 @@
         {
             Gender = gender;
         }
+
+        public override string ToString()
+        {
+            return $"name:{Name}\t age:{Age}\t gender:{Gender}";
+        }
     }
 }

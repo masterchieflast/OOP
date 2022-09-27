@@ -19,5 +19,10 @@
             Power = power;
             Status = false;
         }
+
+        public override string ToString()
+        {
+            return $"engine model:{Model} with power{Power}";
+        }
     }
 }

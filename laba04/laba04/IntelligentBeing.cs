@@ -30,5 +30,10 @@
         {
             Age++;
         }
+
+        public override string ToString()
+        {
+            return $"this creature:{Name}\t live:{Age} year";
+        }
     }
 }
