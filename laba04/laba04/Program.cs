@@ -15,7 +15,7 @@
 
             var Porsche = new Car(4, "Porsche", engine, 412.4, 23);
             var superEngine = new Engine("XE-45A", 5812);
-            var transformer = new Transformer(superEngine, "Optimus", 3408, 5476);
+            var transformer = new Transformer(superEngine, "Optimus", new DateTime(2004, 5, 16), 5476);
 
             Console.WriteLine("--------------------2(is)-------------------");
             if (Porsche is CarManagement)

@@ -2,10 +2,12 @@
 {
     public sealed class Transformer : IntelligentBeing, ITransport
     {
-        public Engine Heart { get; }
+        private readonly Engine _heart;
         private double _energy;
         private bool _transformationStatus;
         private const double EnergyСonsumption = 5.5;
+
+        public int Power => _heart.Power;
 
         public double Energy
         {
@@ -22,9 +24,15 @@
 
         }
 
-        public Transformer(Engine engine, string name, int age, double energy) : base(name, age)
+        public Transformer(Engine engine, string name, DateTime age, double energy) : base(name, age)
         {
-            Heart = engine;
+            _heart = engine;
+            Energy = energy;
+            _transformationStatus = false;
+        }
+        public Transformer(int power, string name, DateTime age, double energy) : base(name, age)
+        {
+            _heart = new Engine(power);
             Energy = energy;
             _transformationStatus = false;
         }
@@ -37,18 +45,18 @@
         public void Launch()
         {
             Console.WriteLine("launch");
-            Heart.Status = true;
+            _heart.Status = true;
         }
 
         public void Shutdown()
         {
-            Console.WriteLine("shutsown");
-            Heart.Status = false;
+            Console.WriteLine("shutdown");
+            _heart.Status = false;
         }
 
         public bool ReadinessСheck()
         {
-            return Heart.Status && Energy > 0;
+            return _heart.Status && Energy > 0;
         }
 
         public void Drive()
@@ -64,7 +72,7 @@
         {
             if (_transformationStatus)
             {
-                Console.WriteLine(Heart.Power * 24);
+                Console.WriteLine(_heart.Power * 24);
             }
             else
             {
@@ -82,7 +90,7 @@
             if (obj is Transformer transformer)
             {
                 if (transformer.Name == Name && transformer.Age == Age && Math.Abs(transformer.Energy - Energy) < 0.001
-                    && transformer.Heart == Heart && transformer._transformationStatus == _transformationStatus)
+                    && transformer._heart == _heart && transformer._transformationStatus == _transformationStatus)
                 {
                     return true;
                 }

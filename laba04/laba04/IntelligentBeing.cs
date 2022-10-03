@@ -3,33 +3,16 @@
     public abstract class IntelligentBeing : object
     {
         public string Name;
-        private int _age;
 
-        protected IntelligentBeing(string name, int age)
+        protected IntelligentBeing(string name, DateTime birthday)
         {
             Name = name;
-            _age = age;
-        }
-        
-
-        public int Age
-        {
-            get => _age;
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentException("age can't be negative");
-                }
-
-                _age = value;
-            }
+            _birthday = birthday;
         }
 
-        public void Birthday()
-        {
-            Age++;
-        }
+        private readonly DateTime _birthday;
+        public TimeSpan Age => DateTime.Now.Subtract(_birthday) / 365;
+
 
         public override string ToString()
         {
