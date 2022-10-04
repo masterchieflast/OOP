@@ -1,18 +1,18 @@
 ﻿namespace laba05
 {
-    public abstract class IntelligentBeing : object
+    public class IntelligentBeing : object
     {
         public string Name;
 
-        protected IntelligentBeing(string name, DateTime birthday)
+
+        public readonly DateTime Birthday;
+        public TimeSpan Age => DateTime.Now.Subtract(Birthday) / 365;
+
+        public IntelligentBeing(string name, DateTime birthday)
         {
             Name = name;
-            _birthday = birthday;
+            Birthday = birthday;
         }
-
-        private readonly DateTime _birthday;
-        public TimeSpan Age => DateTime.Now.Subtract(_birthday) / 365;
-
 
         public override string ToString()
         {

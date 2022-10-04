@@ -1,11 +1,12 @@
 ﻿namespace laba05
 {
-    public sealed class Transformer : IntelligentBeing, ITransport
+    public sealed partial class Transformer
     {
         private readonly Engine _heart;
         private double _energy;
         private bool _transformationStatus;
         private const double EnergyСonsumption = 5.5;
+        public EnumTypesOfTransformers Type;
 
         public int Power => _heart.Power;
 
@@ -24,84 +25,19 @@
 
         }
 
-        public Transformer(Engine engine, string name, DateTime age, double energy) : base(name, age)
+        public Transformer(Engine engine, string name, DateTime age, double energy, EnumTypesOfTransformers type) : base(name, age)
         {
             _heart = engine;
             Energy = energy;
+            Type = type;
             _transformationStatus = false;
         }
-        public Transformer(int power, string name, DateTime age, double energy) : base(name, age)
+        public Transformer(int power, string name, DateTime age, double energy, EnumTypesOfTransformers type, bool _transformationStatus = false) : base(name, age)
         {
             _heart = new Engine(power);
             Energy = energy;
+            Type = type;
             _transformationStatus = false;
-        }
-
-        public void Transformation()
-        {
-            _transformationStatus = !_transformationStatus;
-        }
-
-        public void Launch()
-        {
-            Console.WriteLine("launch");
-            _heart.Status = true;
-        }
-
-        public void Shutdown()
-        {
-            Console.WriteLine("shutdown");
-            _heart.Status = false;
-        }
-
-        public bool ReadinessСheck()
-        {
-            return _heart.Status && Energy > 0;
-        }
-
-        public void Drive()
-        {
-            if (ReadinessСheck())
-            {
-                Console.WriteLine("drive");
-                Energy -= EnergyСonsumption / 100;
-            }
-        }
-
-        public void SpeedControl()
-        {
-            if (_transformationStatus)
-            {
-                Console.WriteLine(_heart.Power * 24);
-            }
-            else
-            {
-                Console.WriteLine("Parking");
-            }
-        }
-
-        public override string ToString()
-        {
-            return $"transformer {Name} was created {Age} years ago";
-        }
-
-        public override bool Equals(object? obj)
-        {
-            if (obj is Transformer transformer)
-            {
-                if (transformer.Name == Name && transformer.Age == Age && Math.Abs(transformer.Energy - Energy) < 0.001
-                    && transformer._heart == _heart && transformer._transformationStatus == _transformationStatus)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return Age.GetHashCode();
         }
     }
 }
