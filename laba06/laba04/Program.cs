@@ -1,7 +1,5 @@
-﻿using System.IO;
-using System.Linq;
+﻿using Newtonsoft.Json;
 using System.Text;
-using Newtonsoft.Json;
 
 namespace laba05
 {
@@ -74,6 +72,7 @@ namespace laba05
             //Porsche.Drive();
             //Porsche.Shutdown();
             #endregion
+            #region task from lab05
             var army = new Army();
 
             using (var file = new FileStream("note.txt", FileMode.OpenOrCreate))
@@ -86,11 +85,11 @@ namespace laba05
                 foreach (var being in ArmyArray)
                 {
                     var data = being.Split(" ");
-                    
+
                     switch (data.Length)
                     {
                         case 7:
-                            army.Add(new Transformer(Convert.ToInt32(data[0]), data[1], 
+                            army.Add(new Transformer(Convert.ToInt32(data[0]), data[1],
                                 new DateTime(Convert.ToInt32(data[2]), Convert.ToInt32(data[3]), Convert.ToInt32(data[4])),
                                 Convert.ToInt32(data[5]), (EnumTypesOfTransformers)Convert.ToInt32(data[6])));
                             break;
@@ -130,25 +129,28 @@ namespace laba05
             Console.WriteLine("-----------FoundTransformerByPower-------------");
             armyController.FoundTransformerByPower(army, 3546);
             Console.WriteLine();
-        
+
             Console.WriteLine("-----------JSON-------------");
-            
+
             var output = JsonConvert.SerializeObject(army);
             Console.WriteLine(output);
             using (var writer = new StreamWriter("JSON.txt", false))
             {
                 writer.Write(output);
             }
-            
+
             string input;
             using (var reader = new StreamReader("JSON.txt"))
             {
                 input = reader.ReadToEnd();
             }
-            
+
 
             var deserializedArmy = JsonConvert.DeserializeObject<Army>(input);
             deserializedArmy.Print();
+#endregion
+
+
         }
     }
 }
