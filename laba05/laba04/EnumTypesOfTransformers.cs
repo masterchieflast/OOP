@@ -1,10 +1,10 @@
 ﻿namespace laba05
 {
-    public enum EnumTypesOfTransformers
+    public enum EnumTypesOfTransformers : long
     {
         Autobot,
         Decepticon,
-        Predacon,
+        Predacon = 78,
         Dinobot
     }
 }

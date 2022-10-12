@@ -9,6 +9,11 @@
             _list = new List<IntelligentBeing>();
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public List<IntelligentBeing> List
         {
             get => _list;

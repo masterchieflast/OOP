@@ -1,24 +1,34 @@
 ﻿namespace laba05
 {
-    public class HumanStruct : Human
+    public struct HumanStruct
     {
-        public string jobTitle;
-        public HumanStruct(string name, DateTime age, string jobTitle) : base(name, age)
+        public string JobTitle;
+        public string Name;
+        public DateTime Age = DateTime.Now;
+
+        public HumanStruct() : this("JO", new DateTime(2004, 12, 12), "doctor")
         {
-            this.jobTitle = jobTitle;
         }
 
-        public HumanStruct(string name, DateTime age, string gender, string jobTitle) : base(name, age, gender)
+        public HumanStruct(string name, DateTime age, string jobTitle)
         {
-            this.jobTitle = jobTitle;
+            Name = name;
+            Age = age;
+            JobTitle = jobTitle;
         }
 
-        public void Heal()
+        /*public HumanStruct()                   //error\\
         {
-            if (jobTitle == "doctor")
+            JobTitle = "q231";
+        }*/
+
+        public static void Heal()
+        {
+            Console.WriteLine("dwadw");
+            /*if (JobTitle == "doctor")
             {
                 Console.WriteLine("HEALTH");
-            }
+            }*/
         }
     }
 }

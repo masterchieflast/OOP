@@ -101,11 +101,10 @@ namespace laba05
                 }
             }
 
-            Console.WriteLine("-----------Print-------------");
+            Console.WriteLine("-----------struct-------------");
             var doctor = new HumanStruct("joo", new DateTime(786, 5, 16), "doctor");
             var doctor1 = new HumanStruct("joo", new DateTime(786, 5, 16), "doctor1");
-            doctor.Heal();
-            doctor1.Heal();
+          
             Console.WriteLine();
 
             Console.WriteLine("-----------Print-------------");
