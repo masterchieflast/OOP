@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Text;
+using laba06;
 
 namespace laba05
 {
@@ -73,7 +75,7 @@ namespace laba05
             //Porsche.Shutdown();
             #endregion
             #region task from lab05
-            var army = new Army();
+            /*var army = new Army();
 
             using (var file = new FileStream("note.txt", FileMode.OpenOrCreate))
             {
@@ -147,10 +149,141 @@ namespace laba05
 
 
             var deserializedArmy = JsonConvert.DeserializeObject<Army>(input);
-            deserializedArmy.Print();
+            deserializedArmy.Print();*/
 #endregion
+            
+            /*1*/
+            try
+            {
+                var transformer = new Transformer(12, "131", DateTime.Now, 123, (EnumTypesOfTransformers)5);
+                Console.WriteLine(transformer.Energy);
+            }
+            catch (InvalidTypeException e)
+            {
+                Logger.Log(e, true, true);
+            }
+            finally
+            {
+                Console.WriteLine("end try-catch-finally\n\n");
+            }
+
+            /*2*/
+            try
+            {
+                var transformer = new Transformer(12, "131", DateTime.Now, 123, (EnumTypesOfTransformers)2);
+                transformer.Energy = -1;
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log(e, true, true);
+            }
+            finally
+            {
+                Console.WriteLine("end try-catch-finally\n\n");
+            }
+
+            /*3*/
+            try
+            {
+                var human = new Human("Jo", DateTime.Now, "gerl");
+            }
+            catch (InvalidGenderException e)
+            {
+                Logger.Log(e, true, true);
+            }
+            finally
+            {
+                Console.WriteLine("end try-catch-finally\n\n");
+            }
+            
+            /*4*/
+            try
+            {
+                var human = new Human("Jo%", DateTime.Now, "gerl");
+            }
+            catch (InvalidNameException e)
+            {
+                Logger.Log(e, true, true);
+            }
+            finally
+            {
+                Console.WriteLine("end try-catch-finally\n\n");
+            }
+            
+            /*5*/
+            try
+            {
+                var car = new Car(5, "PORSCHE", new Engine(12), 243, -1);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log(e, true, true);
+            }
+            finally
+            {
+                Console.WriteLine("end try-catch-finally\n\n");
+            }
+
+            // other exception
+
+            try
+            {
+                var p = 64;
+                var c = 0;
+                if (c == 0) throw new DivideByZeroException("can't divide to zero");
+                else p /= c;
+            }
+            catch (DivideByZeroException exc)
+            {
+                Console.WriteLine("\n\tError");
+                Console.WriteLine($"Massage: {exc.Message}");
+                Console.WriteLine("-> Locate Exception: {0}", exc.TargetSite);
+            }
+            finally
+            {
+                Console.WriteLine("end try-catch-finally\n\n");
+            }
 
 
+            var flag = true;
+            try
+            {
+                var ch = Convert.ToChar(flag);
+                Console.WriteLine("Convert Success");
+            }
+            catch (InvalidCastException exc)
+            {
+                Console.WriteLine("\n\tError");
+                Console.WriteLine("Message: can't convert boolean to char");
+                Console.WriteLine("-> Locate Exception: {0}", exc.TargetSite);
+            }
+            finally
+            {
+                Console.WriteLine("end try-catch-finally\n\n");
+            }
+
+            int[] arr = { 1, 2, 3, 4, 5 }; // массив размером 5
+            try
+            {
+                var length = 10;
+                if (length > arr.Length) throw new IndexOutOfRangeException("with this length will be out of range arr!");
+                for (var i = 0; i < length; i++)
+                    arr[i] += arr[i];
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("\n\tError");
+                Console.WriteLine($"Message: {ex.Message}");
+                Console.WriteLine("-> Locate Exception: {0}", ex.TargetSite);
+            }
+            finally
+            {
+                Console.WriteLine("end try-catch-finally\n\n");
+            }
+
+
+            Debug.Assert(1 == 0, "Check");
+            Console.WriteLine("qwerty");
         }
     }
 }

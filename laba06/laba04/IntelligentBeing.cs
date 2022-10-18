@@ -1,4 +1,6 @@
-﻿namespace laba05
+﻿using laba06;
+
+namespace laba05
 {
     public class IntelligentBeing : object
     {
@@ -10,6 +12,11 @@
 
         public IntelligentBeing(string name, DateTime birthday)
         {
+            if (name.Contains('%'))
+            {
+                throw new InvalidNameException("you have an invalid character", name);
+            }
+
             Name = name;
             Birthday = birthday;
         }

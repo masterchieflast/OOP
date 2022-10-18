@@ -1,4 +1,6 @@
-﻿namespace laba05
+﻿using laba06;
+
+namespace laba05
 {
     public sealed partial class Transformer
     {
@@ -29,6 +31,10 @@
         {
             _heart = engine;
             Energy = energy;
+            if ((int)type < 0 || (int)type > 3)
+            {
+                throw new InvalidTypeException("invalid type", (int)type);
+            }
             Type = type;
             _transformationStatus = false;
         }
@@ -37,6 +43,12 @@
             _heart = new Engine(power);
             Energy = energy;
             Type = type;
+
+            if ((int)type < 0 || (int)type > 3)
+            {
+                throw new InvalidTypeException("invalid type", (int)type);
+            }
+
             _transformationStatus = false;
         }
     }
