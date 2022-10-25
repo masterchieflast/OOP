@@ -281,7 +281,6 @@ namespace laba05
                 Console.WriteLine("end try-catch-finally\n\n");
             }
 
-
             Debug.Assert(1 == 0, "Check");
             Console.WriteLine("qwerty");
         }

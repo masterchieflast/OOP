@@ -29,3 +29,13 @@
 10/18/2022 1:13:51 PM, Information: we support only two genders a boy and a girl
 10/18/2022 1:13:51 PM, Information: you have an invalid character
 10/18/2022 1:13:51 PM, Information: fuel can't be negative
+10/25/2022 4:17:46 PM, Information: invalid type
+10/25/2022 4:17:46 PM, Information: energy can't be negative
+10/25/2022 4:17:46 PM, Information: we support only two genders a boy and a girl
+10/25/2022 4:17:46 PM, Information: you have an invalid character
+10/25/2022 4:17:46 PM, Information: fuel can't be negative
+10/25/2022 4:32:10 PM, Information: invalid type
+10/25/2022 4:32:10 PM, Information: energy can't be negative
+10/25/2022 4:32:10 PM, Information: we support only two genders a boy and a girl
+10/25/2022 4:32:10 PM, Information: you have an invalid character
+10/25/2022 4:32:10 PM, Information: fuel can't be negative
