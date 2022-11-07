@@ -1,10 +1,9 @@
 ﻿namespace lab07
 {
-    public partial class MySet <T> : IGeneric<T> where T : class
+    public class MySet <T> : IGeneric<T> where T : class
     {
         public HashSet<T> _set;
         private const int MaxLen = 5;
-
         public MySet(T value)
         {
             _set = new HashSet<T> { value };
