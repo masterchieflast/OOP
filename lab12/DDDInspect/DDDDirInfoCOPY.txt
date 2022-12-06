@@ -1,0 +1,36 @@
+----------Directory----------
+$RECYCLE.BIN
+AdGuardVpn
+C#
+Downloads
+Hearthstone
+heroku-and-web-to-lead-master
+interestedTask
+Microsoft VS Code
+react
+SoapUI-5.7.0
+SteamLibrary
+study
+SuccessMotors
+System Volume Information
+test
+treadhead
+ulearn
+vBox
+-------------------------------
+----------Files----------
+1254590.jpg
+4177487.jpg
+android-studio-2021.3.1.17-windows.exe
+contacts_to_import.csv
+DumpStack.log.tmp
+OpenJDK17U-jdk_x64_windows_hotspot_17.0.4.1_1.msi
+pagefile.sys
+Screenshot 2022-08-04 153125.png
+sfdx-x64.exe
+sql-recovery.exe
+VSCodeUserSetup-x64-1.72.1.exe
+wallpaperflare.com_wallpaper (1).jpg
+wallpaperflare.com_wallpaper.jpg
+wp3980823-mountain-wallpapers.jpg
+-------------------------
