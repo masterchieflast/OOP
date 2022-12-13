@@ -39,7 +39,7 @@ namespace lab09
         // IOrderedDictionary Members
         public IDictionaryEnumerator GetEnumerator()
         {
-            return new PeopleEnum(_product);
+            return new ProductEnum(_product);
         }
 
         public void Insert(int index, object key, object value)
@@ -141,41 +141,41 @@ namespace lab09
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return new PeopleEnum(_product);
+            return new ProductEnum(_product);
         }
     }
 
-    public class PeopleEnum : IDictionaryEnumerator
+    public class ProductEnum : IDictionaryEnumerator
     {
-        public ArrayList _people;
+        public ArrayList Product;
 
         // Enumerators are positioned before the first element
         // until the first MoveNext() call.
-        private int position = -1;
+        private int _position = -1;
 
-        public PeopleEnum(ArrayList list)
+        public ProductEnum(ArrayList list)
         {
-            _people = list;
+            Product = list;
         }
 
         public bool MoveNext()
         {
-            position++;
-            return (position < _people.Count);
+            _position++;
+            return (_position < Product.Count);
         }
 
         public void Reset()
         {
-            position = -1;
+            _position = -1;
         }
 
-        public object Current
+        public object? Current
         {
             get
             {
                 try
                 {
-                    return _people[position];
+                    return Product[_position];
                 }
                 catch (IndexOutOfRangeException)
                 {
@@ -184,7 +184,7 @@ namespace lab09
             }
         }
 
-        public DictionaryEntry Entry => (DictionaryEntry)Current;
+        public DictionaryEntry Entry => (DictionaryEntry)Current!;
 
         public object Key
         {
@@ -192,7 +192,7 @@ namespace lab09
             {
                 try
                 {
-                    return ((DictionaryEntry)_people[position]).Key;
+                    return ((DictionaryEntry)Product[_position]!).Key;
                 }
                 catch (IndexOutOfRangeException)
                 {
@@ -207,7 +207,7 @@ namespace lab09
             {
                 try
                 {
-                    return ((DictionaryEntry)_people[position]).Value;
+                    return ((DictionaryEntry)Product[_position]!).Value!;
                 }
                 catch (IndexOutOfRangeException)
                 {
