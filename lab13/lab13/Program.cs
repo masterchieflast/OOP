@@ -51,8 +51,6 @@ namespace lab13
             {
                 Console.WriteLine(item);
             }
-            
-            Console.ReadLine();
         }
     }
 }
