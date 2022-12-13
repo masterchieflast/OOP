@@ -1,102 +1,105 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Runtime.Serialization.Formatters.Binary;
+//using System.Runtime.Serialization.Formatters.Soap;
 using System.Runtime.Serialization.Json;
-using System.Runtime.Serialization.Formatters.Soap;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace lab13
 {
     public static class CustomSerializer
     {
-        public static void Serialize(string file, Human car)
+        [Obsolete("Obsolete")]
+        public static void Serialize(string file, Human[] human)
         {
-            string format = file.Split('.').Last();
+            var format = file.Split('.').Last();
             switch (format)
             {
                 case "bin":
-                    BinaryFormatter bf = new BinaryFormatter();
-                    using (FileStream fs = new FileStream(file, FileMode.OpenOrCreate))
+                    var bf = new BinaryFormatter();
+                    using (var fs = new FileStream(file, FileMode.OpenOrCreate))
                     {
-                        bf.Serialize(fs, car);
+                        bf.Serialize(fs, human);
                     }
 
                     break;
 
-                case "soap":
+                /*case "soap":
                     SoapFormatter sf = new SoapFormatter();
                     using (FileStream fs = new FileStream(file, FileMode.OpenOrCreate))
                     {
-                        sf.Serialize(fs, car);
+                        sf.Serialize(fs, human);
                     }
 
-                    break;
+                    break;*/
 
                 case "xml":
-                    XmlSerializer xs = new XmlSerializer(typeof(Human));
-                    using (FileStream fs = new FileStream(file, FileMode.OpenOrCreate))
+                    var xs = new XmlSerializer(typeof(Human[]));
+                    using (var fs = new FileStream(file, FileMode.OpenOrCreate))
                     {
-                        xs.Serialize(fs, car);
+                        xs.Serialize(fs, human);
                     }
 
                     break;
 
                 case "json":
-                    DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Human));
-                    using (FileStream fs = new FileStream(file, FileMode.OpenOrCreate))
+                    var js = new DataContractJsonSerializer(typeof(Human[]));
+                    using (var fs = new FileStream(file, FileMode.OpenOrCreate))
                     {
-                        js.WriteObject(fs, car);
+                        js.WriteObject(fs, human);
                     }
-
                     break;
             }
         }
 
+        [Obsolete("Obsolete")]
         public static void Deserialize(string file)
         {
-            string format = file.Split('.').Last();
+            var format = file.Split('.').Last();
             switch (format)
             {
                 case "bin":
-                    BinaryFormatter bf = new BinaryFormatter();
-                    using (FileStream fs = new FileStream(file, FileMode.Open))
+                    var bf = new BinaryFormatter();
+                    using (var fs = new FileStream(file, FileMode.Open))
                     {
-                        Human car = (Human)bf.Deserialize(fs);
-                        Console.WriteLine($"Deserialized comp: {car.Brand} {car.Model}");
+                        var human = (Human[])bf.Deserialize(fs);
+                        foreach (var h in human)
+                        {
+                            Console.WriteLine($"Deserialized comp: {h.Name} {h.Birthday}");
+                        }
                     }
 
                     break;
 
-                case "soap":
+                /*case "soap":
                     SoapFormatter sf = new SoapFormatter();
                     using (FileStream fs = new FileStream(file, FileMode.Open))
                     {
-                        Human car = (Human)sf.Deserialize(fs);
-                        Console.WriteLine($"Deserialized comp: {car.Brand} {car.Model}");
+                        Human human = (Human)sf.Deserialize(fs);
                     }
 
-                    break;
+                    break;*/
 
                 case "xml":
-                    XmlSerializer xs = new XmlSerializer(typeof(Human));
-                    using (FileStream fs = new FileStream(file, FileMode.Open))
+                    var xs = new XmlSerializer(typeof(Human[]));
+                    using (var fs = new FileStream(file, FileMode.Open))
                     {
-                        Human car = (Human)xs.Deserialize(fs);
-                        Console.WriteLine($"Deserialized comp: {car.Brand} {car.Model}");
+                        var human = (Human[])xs.Deserialize(fs)!; 
+                        foreach (var h in human)
+                        {
+                            Console.WriteLine($"Deserialized comp: {h.Name} {h.Birthday}");
+                        }
                     }
 
                     break;
 
                 case "json":
-                    DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Human));
-                    using (FileStream fs = new FileStream(file, FileMode.Open))
+                    var js = new DataContractJsonSerializer(typeof(Human[]));
+                    using (var fs = new FileStream(file, FileMode.Open))
                     {
-                        Human car = (Human)js.ReadObject(fs);
-                        Console.WriteLine($"Deserialized comp: {car.Brand} {car.Model}");
+                        var human = (Human[])js.ReadObject(fs)!; 
+                        foreach (var h in human)
+                        {
+                            Console.WriteLine($"Deserialized comp: {h.Name} {h.Birthday}");
+                        }
                     }
 
                     break;
