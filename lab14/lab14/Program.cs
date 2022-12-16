@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
 
 namespace lab14
 {
@@ -7,11 +6,12 @@ namespace lab14
     {
         static void Main(string[] args)
         {
-            //First();
-            //Second();
-            //Third();
-            //Fourth();
-            //Fifth();
+            //лаба была спижена
+            First();
+            Second();
+            Third();
+            Fourth();
+            Fifth();
         }
 
 
@@ -74,11 +74,11 @@ namespace lab14
             mutex.WaitOne();            // ожидает до тех пор, пока не будет получен мьютекс, для которого он был вызван (вход в критическую секцию)
 
             Console.WriteLine("\n--------------------");
-            Console.WriteLine("Приоритет:   " + NumbersThread.Priority);
+            Console.WriteLine("Priority:   " + NumbersThread.Priority);
             Thread.Sleep(100);
-            Console.WriteLine("Имя потока:  " + NumbersThread.Name);
+            Console.WriteLine("Name tread:  " + NumbersThread.Name);
             Thread.Sleep(100);
-            Console.WriteLine("ID потока:   " + NumbersThread.ManagedThreadId);
+            Console.WriteLine("ID tread:   " + NumbersThread.ManagedThreadId);
             Console.WriteLine("---------------------");
             Thread.Sleep(1000);
 
@@ -108,15 +108,15 @@ namespace lab14
 
         private static void Fourth()
         {
-            Console.WriteLine("\n\n\nПотоки чётных и нечётных чисел:");
+            Console.WriteLine("\n\n\nthead evan and odd numbers");
             Thread evenThread = new Thread(Methods.EvenNumbers);        // поток чётных чисел
-            evenThread.Priority = ThreadPriority.AboveNormal;           // меняем приоритет по заданию
+            evenThread.Priority = ThreadPriority.Normal;           // меняем приоритет по заданию
             evenThread.Start();                 // если закомментить Join(), второй поток не будет ждать первый
             evenThread.Join();                  // чтобы выводились поочередно, надо закомментить эту строку
 
             Console.WriteLine();
             Thread oddThread = new Thread(Methods.OddNumbers);          // поток нечётных чисел
-            oddThread.Priority = ThreadPriority.BelowNormal;
+            oddThread.Priority = ThreadPriority.Normal;
             oddThread.Start();
             oddThread.Join();                  // дожидаемся завершение работы потока
             Console.WriteLine("\n");
